@@ -1,1 +1,58 @@
-<p>menu works!</p>
+<div>
+  <h2>Select your location</h2>
+  <div>
+    <form class="example-form">
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Country</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Country"
+               matInput
+               [formControl]="countryControl"
+               [matAutocomplete]="autoCountry">
+        <mat-autocomplete #autoCountry>
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{country}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>City</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="City"
+               matInput
+               [formControl]="cityControl"
+               [matAutocomplete]="autoCity">
+        <mat-autocomplete #autoCity="matAutocomplete">
+          <mat-option *ngFor="let city of cities" [value]="city">
+            {{city}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Floor</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Floor"
+               matInput
+               [formControl]="floorControl"
+               [matAutocomplete]="autoFloor">
+        <mat-autocomplete #autoFloor="matAutocomplete">
+          <mat-option *ngFor="let floor of floors" [value]="floor">
+            {{floor}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
