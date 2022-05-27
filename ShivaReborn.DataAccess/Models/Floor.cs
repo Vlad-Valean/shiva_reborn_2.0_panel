@@ -1,4 +1,4 @@
-﻿namespace shiva_reborn_2._0_panel.Models;
+﻿namespace ShivaReborn.DataAccess.Models;
 
 public class Floor
 {
