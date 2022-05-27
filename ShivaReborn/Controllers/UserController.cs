@@ -12,7 +12,7 @@ public class UserController
         [HttpGet(Name = "GetUsers")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var users = NULL;
+            var users = null;
             return Ok(users);
         }
 
