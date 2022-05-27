@@ -1,0 +1,4 @@
+<img (click)="addDot($event);" [src]="{img}" #img>
+<ng-container *ngFor="let coord of coords">
+<div class="dot" [ngStyle]="{'left':coord.x+'px','top':coord.y+'px'}" (click)="openDialog()"></div>
+</ng-container>
