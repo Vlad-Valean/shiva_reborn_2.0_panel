@@ -24,7 +24,7 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpGet("GetOneFloor")]
-        public async Task<ActionResult<Floor>> GetOneFloor(string id)
+        public async Task<ActionResult<Floor>> GetOneFloor(int id)
         {
             return await _floorService.GetAsync(id);
         }
@@ -36,14 +36,14 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpDelete(Name = "DeleteFloor")]
-        public async Task<ActionResult<Floor>> DeleteFloor(string id)
+        public async Task<ActionResult<Floor>> DeleteFloor(int id)
         {
             var floor = await _floorService.RemoveAsync(id);
             return Ok(floor);
         }
 
         [HttpPatch(Name = "UpdateAnFloorInfo")]
-        public async Task<ActionResult<Floor>> UpdateFloor(string id, string name, [FromBody]Place[] places)
+        public async Task<ActionResult<Floor>> UpdateFloor(int id, string name, [FromBody]Place[] places)
         {
             var floors = await _floorService.GetAllAsync();
             var floor = floors.FirstOrDefault(u => u.Id == id);

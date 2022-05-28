@@ -26,7 +26,7 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpGet("GetOneBuilding")]
-        public async Task<ActionResult<Building>> GetOneBuilding(string id)
+        public async Task<ActionResult<Building>> GetOneBuilding(int id)
         {
             return await _buildingService.GetAsync(id);
         }
@@ -38,14 +38,14 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpDelete(Name = "DeleteBuilding")]
-        public async Task<ActionResult<Building>> DeleteBuilding(string id)
+        public async Task<ActionResult<Building>> DeleteBuilding(int id)
         {
             var building = await _buildingService.RemoveAsync(id);
             return Ok(building);
         }
 
         [HttpPatch(Name = "UpdateAnBuildingInfo")]
-        public async Task<ActionResult<Building>> UpdateBuilding(string id, string country, string city,
+        public async Task<ActionResult<Building>> UpdateBuilding(int id, string country, string city,
             [FromBody] Floor[] floors)
         {
             var buildings = await _buildingService.GetAllAsync();

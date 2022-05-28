@@ -24,8 +24,11 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Building", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("city")
                         .HasColumnType("text");
@@ -40,8 +43,11 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Floor", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("buildingId")
                         .IsRequired()
@@ -58,8 +64,11 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Place", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string[]>("dates")
                         .IsRequired()
@@ -93,8 +102,11 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("text");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("assignedPlaceId")
                         .IsRequired()
@@ -112,6 +124,14 @@ namespace ShivaReborn.DataAccess.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("lastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("username")
                         .IsRequired()
                         .HasColumnType("text");
 

@@ -24,7 +24,7 @@ namespace ShivaReborn.DataAccess.Repositories
             }
         }
 
-        public virtual async Task<TEntity> RemoveAsync(string id)
+        public virtual async Task<TEntity> RemoveAsync(int id)
         {
             var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(t => t.Id == id);
             if (entity is null)
@@ -37,7 +37,7 @@ namespace ShivaReborn.DataAccess.Repositories
             return entity;
         }
 
-        public virtual async Task<TEntity> GetAsync(string id)
+        public virtual async Task<TEntity> GetAsync(int id)
         {
             var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(t => t.Id == id);
             if (entity is null)

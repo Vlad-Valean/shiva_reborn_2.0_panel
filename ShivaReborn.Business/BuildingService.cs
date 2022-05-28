@@ -18,11 +18,11 @@ namespace ShivaReborn.Business
             return await _buildingRepository.GetAllAsync();
         }
 
-        public async Task<Building> RemoveAsync(string id)
+        public async Task<Building> RemoveAsync(int id)
         {
             return await _buildingRepository.RemoveAsync(id);
         }
-        public async Task<Building> GetAsync(string id)
+        public async Task<Building> GetAsync(int id)
         {
             return await _buildingRepository.GetAsync(id);
         }

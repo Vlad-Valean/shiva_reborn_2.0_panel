@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace ShivaReborn.DataAccess.Models;
 
 public abstract class BaseEntity
 {
-    public string Id { get; set; }
+    public int Id { get; set; }
 }

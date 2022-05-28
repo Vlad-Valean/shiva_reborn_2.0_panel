@@ -27,7 +27,7 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpGet("GetOnePlace")]
-        public async Task<ActionResult<Place>> GetOnePlace(string id)
+        public async Task<ActionResult<Place>> GetOnePlace(int id)
         {
             return await _placeService.GetAsync(id);
         }
@@ -39,14 +39,14 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpDelete(Name = "DeletePlace")]
-        public async Task<ActionResult<Place>> DeletePlace(string id)
+        public async Task<ActionResult<Place>> DeletePlace(int id)
         {
             var place = await _placeService.RemoveAsync(id);
             return Ok(place);
         }
 
         [HttpPatch(Name = "UpdateAnPlaceInfo")]
-        public async Task<ActionResult<Place>> UpdatePlace(string id, string name, bool isAssigned, [FromRoute]string[] usersId,string[] dates)
+        public async Task<ActionResult<Place>> UpdatePlace(int id, string name, bool isAssigned, [FromRoute]string[] usersId,string[] dates)
         {
             var places = await _placeService.GetAllAsync();
             var place = places.FirstOrDefault(u => u.Id == id);

@@ -23,7 +23,7 @@ public class BuildingRepository : BaseRepository<Building>
             throw new Exception($"Couldn't load BUILDINGS from the database : {msg.Message}", msg);
         }
     }
-    public override async Task<Building> RemoveAsync(string id)
+    public override async Task<Building> RemoveAsync(int id)
     {
         var building = await _context.Set<Building>().FirstOrDefaultAsync(b => b.Id == id);
         if (building is null)
@@ -35,7 +35,7 @@ public class BuildingRepository : BaseRepository<Building>
         await _context.SaveChangesAsync();
         return building;
     }
-    public override async Task<Building> GetAsync(string id)
+    public override async Task<Building> GetAsync(int id)
     {
         var building = await _context.Set<Building>().FirstOrDefaultAsync(t => t.Id == id);
         if (building is null)

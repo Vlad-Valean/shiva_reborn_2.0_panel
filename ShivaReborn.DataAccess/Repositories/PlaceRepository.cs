@@ -23,7 +23,7 @@ public class PlaceRepository : BaseRepository<Place>
             throw new Exception($"Couldn't load PLACES from the database : {msg.Message}", msg);
         }
     }
-    public override async Task<Place> RemoveAsync(string id)
+    public override async Task<Place> RemoveAsync(int id)
     {
         var place = await _context.Set<Place>().FirstOrDefaultAsync(b => b.Id == id);
         if (place is null)
@@ -35,7 +35,7 @@ public class PlaceRepository : BaseRepository<Place>
         await _context.SaveChangesAsync();
         return place;
     }
-    public override async Task<Place> GetAsync(string id)
+    public override async Task<Place> GetAsync(int id)
     {
         var place = await _context.Set<Place>().FirstOrDefaultAsync(t => t.Id == id);
         if (place is null)

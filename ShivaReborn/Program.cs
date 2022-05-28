@@ -5,6 +5,7 @@ using ShivaReborn.Business.Interfaces;
 using ShivaReborn.DataAccess;
 using ShivaReborn.DataAccess.Models;
 using ShivaReborn.DataAccess.Repositories;
+using UserService = ShivaReborn.Business.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 

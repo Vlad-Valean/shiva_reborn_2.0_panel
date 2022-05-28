@@ -17,12 +17,12 @@ namespace ShivaReborn.Business
         {
             return await _userRepository.GetAllAsync();
         }
-        public async Task<User> RemoveAsync(string id)
+        public async Task<User> RemoveAsync(int id)
         {
             return await _userRepository.RemoveAsync(id);
         }
 
-        public async Task<User> GetAsync(string id)
+        public async Task<User> GetAsync(int id)
         {
             return await _userRepository.GetAsync(id);
         }
