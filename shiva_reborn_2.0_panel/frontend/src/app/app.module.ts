@@ -19,6 +19,7 @@ import{MatSnackBarModule} from "@angular/material/snack-bar";
 import{HttpClientModule} from "@angular/common/http";
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminCreateUsersComponent } from './pages/admin-create-users/admin-create-users.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MapComponent,
     DialogContentComponent,
     MapPageComponent,
-    CalendarComponent
+    CalendarComponent,
+    AdminCreateUsersComponent
   ],
   imports: [
     BrowserModule,
