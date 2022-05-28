@@ -50,8 +50,11 @@ namespace ShivaReborn.Controllers
         {
             var places = await _placeService.GetAllAsync();
             var place = places.FirstOrDefault(u => u.Id == id);
+            if (place is null)
+            {
+                return NotFound();
+            }
             await _placeService.RemoveAsync(id);
-
             place.name = name;
             place.isAssigned = isAssigned;
             place.assignedUser = user;

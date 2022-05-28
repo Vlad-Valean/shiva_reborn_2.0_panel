@@ -16,7 +16,8 @@ public class FloorRepository : BaseRepository<Floor>
     {
         try
         {
-            return await _context.floors.Include(u => u.places).ToListAsync();
+            return await _context.floors.ToListAsync();
+            
         }
         catch (Exception msg)
         {

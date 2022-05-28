@@ -23,43 +23,45 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Building", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
                     b.Property<string>("city")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("country")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Buildings", (string)null);
                 });
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Floor", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("Buildingid")
+                    b.Property<string>("BuildingId")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.HasIndex("Buildingid");
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuildingId");
 
                     b.ToTable("Floors", (string)null);
                 });
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Place", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("Floorid")
+                    b.Property<string>("FloorId")
                         .HasColumnType("text");
 
                     b.Property<string>("User")
@@ -72,9 +74,9 @@ namespace ShivaReborn.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("Floorid");
+                    b.HasIndex("FloorId");
 
                     b.HasIndex("User")
                         .IsUnique();
@@ -84,11 +86,10 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.User", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("buildingid")
-                        .IsRequired()
+                    b.Property<string>("buildingId")
                         .HasColumnType("text");
 
                     b.Property<string>("email")
@@ -103,9 +104,9 @@ namespace ShivaReborn.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("buildingid");
+                    b.HasIndex("buildingId");
 
                     b.ToTable("Users", (string)null);
                 });
@@ -114,14 +115,14 @@ namespace ShivaReborn.DataAccess.Migrations
                 {
                     b.HasOne("ShivaReborn.DataAccess.Models.Building", null)
                         .WithMany("floors")
-                        .HasForeignKey("Buildingid");
+                        .HasForeignKey("BuildingId");
                 });
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.Place", b =>
                 {
                     b.HasOne("ShivaReborn.DataAccess.Models.Floor", null)
                         .WithMany("places")
-                        .HasForeignKey("Floorid");
+                        .HasForeignKey("FloorId");
 
                     b.HasOne("ShivaReborn.DataAccess.Models.User", "assignedUser")
                         .WithOne("assignedPlace")
@@ -134,9 +135,7 @@ namespace ShivaReborn.DataAccess.Migrations
                 {
                     b.HasOne("ShivaReborn.DataAccess.Models.Building", "building")
                         .WithMany()
-                        .HasForeignKey("buildingid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("buildingId");
 
                     b.Navigation("building");
                 });
@@ -153,8 +152,7 @@ namespace ShivaReborn.DataAccess.Migrations
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.User", b =>
                 {
-                    b.Navigation("assignedPlace")
-                        .IsRequired();
+                    b.Navigation("assignedPlace");
                 });
 #pragma warning restore 612, 618
         }

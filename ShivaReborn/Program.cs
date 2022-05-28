@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
 using ShivaReborn.Business;
 using ShivaReborn.Business.Interfaces;
@@ -15,9 +16,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IService<User>, UserService>();
 builder.Services.AddTransient<IRepository<User>, UserRepository>();
+builder.Services.AddTransient<IService<Floor>, FloorService>();
+builder.Services.AddTransient<IRepository<Floor>, FloorRepository>();
+builder.Services.AddTransient<IService<Place>, PlaceService>();
+builder.Services.AddTransient<IRepository<Place>, PlaceRepository>();
+builder.Services.AddTransient<IService<Building>, BuildingService>();
+builder.Services.AddTransient<IRepository<Building>, BuildingRepository>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("ShivaContext");
-builder.Services.AddDbContext<ShivaContext>(options => options.UseNpgsql(connectionString,x => x.MigrationsAssembly("ShivaReborn.DataAccess")));
+builder.Services.AddDbContext<ShivaContext>(options => options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 

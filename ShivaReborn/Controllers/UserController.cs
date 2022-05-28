@@ -50,7 +50,11 @@ namespace ShivaReborn.Controllers
             var users = await _userService.GetAllAsync();
             var user = users.FirstOrDefault(u => u.Id == id);
             await _userService.RemoveAsync(id);
-
+            if (user is null)
+            {
+                return NotFound();
+            }
+            
             user.firstName = firstName;
             user.lastName = lastName;
             user.email = email;

@@ -1,9 +1,7 @@
-using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ShivaReborn.Business.Interfaces;
 using ShivaReborn.DataAccess.Models;
-using ShivaReborn.DataAccess.Repositories;
+
 
 namespace ShivaReborn.Controllers
 {
@@ -50,7 +48,11 @@ namespace ShivaReborn.Controllers
             var floors = await _floorService.GetAllAsync();
             var floor = floors.FirstOrDefault(u => u.Id == id);
             await _floorService.RemoveAsync(id);
-
+            if (floor is null)
+            {
+                return NotFound();
+            }
+            
             floor.name = name;
             floor.places = places;
             
