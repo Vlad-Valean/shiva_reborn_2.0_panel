@@ -11,8 +11,8 @@ using ShivaReborn.DataAccess;
 namespace ShivaReborn.DataAccess.Migrations
 {
     [DbContext(typeof(ShivaContext))]
-    [Migration("20220528103224_NextMigration")]
-    partial class NextMigration
+    [Migration("20220528150026_Migration5")]
+    partial class Migration5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,8 @@ namespace ShivaReborn.DataAccess.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("BuildingId")
+                    b.Property<string>("buildingId")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("name")
@@ -52,8 +53,6 @@ namespace ShivaReborn.DataAccess.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BuildingId");
 
                     b.ToTable("Floors", (string)null);
                 });
@@ -63,10 +62,8 @@ namespace ShivaReborn.DataAccess.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.Property<string>("FloorId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("User")
+                    b.Property<string>("floorId")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("isAssigned")
@@ -78,20 +75,12 @@ namespace ShivaReborn.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FloorId");
-
-                    b.HasIndex("User")
-                        .IsUnique();
-
                     b.ToTable("Places", (string)null);
                 });
 
             modelBuilder.Entity("ShivaReborn.DataAccess.Models.User", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("text");
-
-                    b.Property<string>("buildingId")
                         .HasColumnType("text");
 
                     b.Property<string>("email")
@@ -108,53 +97,7 @@ namespace ShivaReborn.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("buildingId");
-
                     b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("ShivaReborn.DataAccess.Models.Floor", b =>
-                {
-                    b.HasOne("ShivaReborn.DataAccess.Models.Building", null)
-                        .WithMany("floors")
-                        .HasForeignKey("BuildingId");
-                });
-
-            modelBuilder.Entity("ShivaReborn.DataAccess.Models.Place", b =>
-                {
-                    b.HasOne("ShivaReborn.DataAccess.Models.Floor", null)
-                        .WithMany("places")
-                        .HasForeignKey("FloorId");
-
-                    b.HasOne("ShivaReborn.DataAccess.Models.User", "assignedUser")
-                        .WithOne("assignedPlace")
-                        .HasForeignKey("ShivaReborn.DataAccess.Models.Place", "User");
-
-                    b.Navigation("assignedUser");
-                });
-
-            modelBuilder.Entity("ShivaReborn.DataAccess.Models.User", b =>
-                {
-                    b.HasOne("ShivaReborn.DataAccess.Models.Building", "building")
-                        .WithMany()
-                        .HasForeignKey("buildingId");
-
-                    b.Navigation("building");
-                });
-
-            modelBuilder.Entity("ShivaReborn.DataAccess.Models.Building", b =>
-                {
-                    b.Navigation("floors");
-                });
-
-            modelBuilder.Entity("ShivaReborn.DataAccess.Models.Floor", b =>
-                {
-                    b.Navigation("places");
-                });
-
-            modelBuilder.Entity("ShivaReborn.DataAccess.Models.User", b =>
-                {
-                    b.Navigation("assignedPlace");
                 });
 #pragma warning restore 612, 618
         }

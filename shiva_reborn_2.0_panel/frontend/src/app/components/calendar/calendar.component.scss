@@ -3,7 +3,7 @@
   height: 50px;
   display: flex;
   justify-content: flex-end;
-  align-items: start;
+  align-items: flex-start;
   margin: 3px;
 }
 
@@ -15,4 +15,10 @@ h5{
 .places{
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

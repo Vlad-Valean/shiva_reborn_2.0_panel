@@ -54,8 +54,7 @@ namespace ShivaReborn.Controllers
             }
             
             floor.name = name;
-            floor.places = places;
-            
+
             await _floorService.AddAsync(floor);
 
             return Ok(floor);

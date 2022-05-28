@@ -7,7 +7,7 @@ import {MapPageComponent} from "./pages/map-page/map-page.component";
 const routes: Routes = [
   {path:'login',component:LogInComponent},
   {path:'',redirectTo:'/login',pathMatch:'full'},
-  {path:'map',component:MapPageComponent}
+  {path:'map',component:MapPageComponent},
 ];
 
 @NgModule({

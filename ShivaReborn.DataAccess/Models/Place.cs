@@ -8,5 +8,5 @@ public class Place : BaseEntity
 {
     public string name { get; set; }
     public bool isAssigned { get; set; }
-    [ForeignKey("User")] [JsonIgnore] public User? assignedUser { get; set; }
+    [ForeignKey("Floor")]public string floorId { get; set; }
 }
