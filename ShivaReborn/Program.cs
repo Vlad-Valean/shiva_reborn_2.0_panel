@@ -17,7 +17,7 @@ builder.Services.AddTransient<IService<User>, UserService>();
 builder.Services.AddTransient<IRepository<User>, UserRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("ShivaContext");
-builder.Services.AddDbContext<ShivaContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ShivaContext>(options => options.UseNpgsql(connectionString,x => x.MigrationsAssembly("ShivaReborn.DataAccess")));
 
 var app = builder.Build();
 
