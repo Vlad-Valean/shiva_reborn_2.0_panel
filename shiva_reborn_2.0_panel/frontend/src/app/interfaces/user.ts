@@ -3,8 +3,8 @@ export interface IUser {
   firstName: string,
   lastName: string,
   email: string,
-  building: IBuilding,
-  assignedPlace: IPlaces,
+  building?: IBuilding,
+  assignedPlace?: IPlaces,
 }
 
 export interface IBuilding {

@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
 using ShivaReborn.Business;
 using ShivaReborn.Business.Interfaces;
@@ -15,7 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IService<User>, UserService>();
-builder.Services.AddTransient<IRepository<User>, UserRepository>();
+/*
+builder.Services.AddTransient<IRepository<User>, UserManager<>();
+*/
 builder.Services.AddTransient<IService<Floor>, FloorService>();
 builder.Services.AddTransient<IRepository<Floor>, FloorRepository>();
 builder.Services.AddTransient<IService<Place>, PlaceService>();
