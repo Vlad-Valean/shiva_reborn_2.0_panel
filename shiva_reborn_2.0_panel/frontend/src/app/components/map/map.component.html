@@ -1,5 +1,20 @@
 <img (click)="addDot($event)" [src]="img">
 <ng-container *ngFor="let place of places">
-  <div class="dot" [ngClass]="place.isAssigned?(place.usersId[0]==session.userId)?'blue':'red':'green'"
-       [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}" (click)="openDialog()"></div>
+<!--  <div class="dot" [ngClass]="place.isAssigned?(place.usersId[0]==session.userId)?'blue':'red':'green'"-->
+<!--       [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}" (click)="openDialog()"></div>-->
+  <div *ngIf="isOccUser(place)" class="dot blue" (click)="openDialog()" [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}"></div>
+  <div *ngIf="isOcc(place)" class="dot red" (click)="openDialog()" [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}"></div>
+  <div *ngIf="!(isOcc(place) || isOccUser(place))" class="dot green" (click)="openDialog()" [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}"></div>
 </ng-container>
+<mat-form-field appearance="fill" class="date-picker">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="datepicker" [(ngModel)] = 'date' [min]="todayDate" [max]="twoMonth">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+  <mat-datepicker #datepicker>
+    <mat-datepicker-actions>
+      <button mat-button matDatepickerCancel>Cancel</button>
+      <button mat-raised-button color="primary" matDatepickerApply (click)="changeDate()" >Apply</button>
+    </mat-datepicker-actions>
+  </mat-datepicker>
+</mat-form-field>
