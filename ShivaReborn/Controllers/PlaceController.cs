@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using ShivaReborn.Business.Interfaces;
 using ShivaReborn.DataAccess.Models;
 using ShivaReborn.DataAccess.Repositories;
@@ -45,8 +46,7 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpPatch(Name = "UpdateAnPlaceInfo")]
-        public async Task<ActionResult<Place>> UpdatePlace(string id, string name, bool isAssigned,
-            [FromBody] User user)
+        public async Task<ActionResult<Place>> UpdatePlace(string id, string name, bool isAssigned, [FromRoute]string[] usersId,string[] dates)
         {
             var places = await _placeService.GetAllAsync();
             var place = places.FirstOrDefault(u => u.Id == id);
@@ -57,7 +57,8 @@ namespace ShivaReborn.Controllers
             await _placeService.RemoveAsync(id);
             place.name = name;
             place.isAssigned = isAssigned;
-
+            place.usersId = usersId;
+            place.dates = dates;
             await _placeService.AddAsync(place);
 
             return Ok(place);

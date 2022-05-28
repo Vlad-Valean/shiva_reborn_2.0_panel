@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ShivaReborn.DataAccess;
@@ -11,9 +12,10 @@ using ShivaReborn.DataAccess;
 namespace ShivaReborn.DataAccess.Migrations
 {
     [DbContext(typeof(ShivaContext))]
-    partial class ShivaContextModelSnapshot : ModelSnapshot
+    [Migration("20220528181855_Migration7")]
+    partial class Migration7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
