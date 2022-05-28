@@ -11,22 +11,22 @@ export interface IBuilding {
   id?: string,
   country: string,
   city: string,
-  floors: IFloors[]
 }
 
 export interface IFloors{
   id?: string,
   name: string,
-  places: IPlaces[]
+  buildingId: string,
 }
 
 export interface IPlaces{
   id?: string,
   name: string,
-  isAssigned: boolean,
+  isAssigned?: boolean,
+  floorId?: string,
   coord: ICoord,
-  assignedUser: string,
-  date: string,
+  assignedUser?: string,
+  date?: string,
 }
 
 export interface ICoord{

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BuildingService} from "../../services/building.service";
+import {IBuilding, IFloors, IPlaces} from "../../interfaces/user";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  buildings?: IBuilding[];
+  floors?: IFloors[];
+  places?: IPlaces[];
 
-  ngOnInit(): void {
+  buildingsControl = new FormControl();
+  floorsControl = new FormControl();
+
+  constructor(private _buildingService: BuildingService) {
   }
 
+  async ngOnInit(): Promise<void> {
+    this.buildings = await this._buildingService.getBuildings();
+    if (this.buildings[0].id) {
+      this.floors = await this._buildingService.getFloorsByBuilding(this.buildings[0].id)
+    }
+    if (this.floors && this.floors[0].id) {
+      this.places = await this._buildingService.getPlacesbyFloor(this.floors[0].id);
+    }
+  }
 }
