@@ -14,6 +14,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MapComponent} from './components/map/map.component';
 import {DialogContentComponent} from './components/dialog-content/dialog-content.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { MapPageComponent } from './pages/map-page/map-page.component';
+import{MatSnackBarModule} from "@angular/material/snack-bar";
+import{HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     LogInComponent,
     MenuComponent,
     MapComponent,
-    DialogContentComponent
+    DialogContentComponent,
+    MapPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
+    MatSnackBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
