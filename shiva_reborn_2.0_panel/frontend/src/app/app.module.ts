@@ -14,7 +14,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {MapComponent} from './components/map/map.component';
 import {DialogContentComponent} from './components/dialog-content/dialog-content.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import { MapPageComponent } from './pages/map-page/map-page.component';
 import{MatSnackBarModule} from "@angular/material/snack-bar";
 import{HttpClientModule} from "@angular/common/http";
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -27,7 +26,6 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MenuComponent,
     MapComponent,
     DialogContentComponent,
-    MapPageComponent,
     CalendarComponent
   ],
     imports: [

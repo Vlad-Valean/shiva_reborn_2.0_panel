@@ -10,8 +10,18 @@ import {FormControl} from "@angular/forms";
 })
 export class MenuComponent implements OnInit {
 
-  buildings?: IBuilding[];
-  floors?: IFloors[];
+  public openMap = false;
+
+  buildings: IBuilding[] = [{
+    id: '',
+    country: '',
+    city: '',
+  }]
+  floors: IFloors[] = [{
+    id: '',
+    name: '',
+    buildingId: '',
+  }];
   places?: IPlaces[];
 
   buildingsControl = new FormControl();
@@ -22,11 +32,25 @@ export class MenuComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.buildings = await this._buildingService.getBuildings();
-    if (this.buildings[0].id) {
-      this.floors = await this._buildingService.getFloorsByBuilding(this.buildings[0].id)
-    }
-    if (this.floors && this.floors[0].id) {
-      this.places = await this._buildingService.getPlacesbyFloor(this.floors[0].id);
+    this.floors = await this._buildingService.getFloorsByBuilding(this.buildings[0].id)
+    this.places = await this._buildingService.getPlacesbyFloor(this.floors[0].id);
+
+  }
+
+  async setFloors(i: number) {
+    this.floors = await this._buildingService.getFloorsByBuilding(this.buildings[i].id);
+  }
+
+  searchFloors(i: number) {
+    this.setFloors(i);
+    this.floorsControl.patchValue('');
+  }
+
+  async submit() {
+    const floor = this.floors.find(x => x.name == this.floorsControl.value);
+    if (floor) {
+      this.places = await this._buildingService.getPlacesbyFloor(floor.id);
+      this.openMap = true;
     }
   }
 }

@@ -8,24 +8,24 @@ export interface IUser {
 }
 
 export interface IBuilding {
-  id?: string,
+  id: string,
   country: string,
   city: string,
 }
 
 export interface IFloors{
-  id?: string,
+  id: string,
   name: string,
   buildingId: string,
 }
 
 export interface IPlaces {
-  id?: string,
+  id: string,
   name: string,
   isAssigned?: boolean,
   floorId: string,
   xCoordonate: number,
   yCoordonate: number,
   usersId: string[],
-  dates?: string[],
+  dates: string[],
 }

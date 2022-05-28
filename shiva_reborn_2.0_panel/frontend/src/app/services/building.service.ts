@@ -31,12 +31,12 @@ export class BuildingService {
   public async getFloorsByBuilding(id: string): Promise<IFloors[]> {
     const url = this._baseUrl + '/api/Floors/GetFloors';
     const floors = await firstValueFrom(this._http.get<IFloors[]>(url));
-    return floors.filter(x => x.buildingId = id);
+    return floors.filter(x => x.buildingId == id);
   }
 
   public async getPlacesbyFloor(id: string): Promise<IPlaces[]> {
     const url = this._baseUrl + '/api/Places/GetPlaces';
     const places = await firstValueFrom(this._http.get<IPlaces[]>(url));
-    return places.filter(x => x.floorId = id);
+    return places.filter(x => x.floorId == id);
   }
 }
