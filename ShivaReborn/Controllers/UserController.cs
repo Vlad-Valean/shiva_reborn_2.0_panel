@@ -55,9 +55,9 @@ namespace ShivaReborn.Controllers
                 return NotFound();
             }
             
-            user.firstName = firstName;
-            user.lastName = lastName;
-            user.email = email;
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
 
             await _userService.AddAsync(user);
 

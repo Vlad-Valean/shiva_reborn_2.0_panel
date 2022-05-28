@@ -18,6 +18,7 @@ import { MapPageComponent } from './pages/map-page/map-page.component';
 import{MatSnackBarModule} from "@angular/material/snack-bar";
 import{HttpClientModule} from "@angular/common/http";
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MatButtonModule,
     MatDialogModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

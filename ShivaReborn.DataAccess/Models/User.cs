@@ -1,12 +1,14 @@
-﻿using System.Text.Json.Serialization;
-
+﻿using Microsoft.AspNetCore.Identity;
 namespace ShivaReborn.DataAccess.Models;
-public class User : BaseEntity
+public class User : IdentityUser
 {
-    public string firstName { get; set; }
-    public string lastName { get; set; }
-    public string email { get; set; }
-    public Building? building { get; set; }
-    public Place? assignedPlace { get; set; }
-    private bool isAdmin { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public Building? Building { get; set; }
+    public Place? AssignedPlace { get; set; }
+    private bool IsAdmin { get; set; }
+
+    public DateTime Created { get; set; }
+    public DateTime Updated { get; set; }
+    
 }
