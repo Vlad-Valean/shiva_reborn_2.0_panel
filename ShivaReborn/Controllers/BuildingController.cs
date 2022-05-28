@@ -28,30 +28,13 @@ namespace ShivaReborn.Controllers
         [HttpGet("GetOneBuilding")]
         public async Task<ActionResult<Building>> GetOneBuilding(string id)
         {
-            var buildings = await _buildingService.GetAllAsync();
-            var building = buildings.FirstOrDefault(u => u.Id == id);
-
-            if (building is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(building);
+            return await _buildingService.GetAsync(id);
         }
 
         [HttpPost(Name = "AddBuilding")]
         public async Task<ActionResult<Building>> AddBuilding([FromBody] Building building)
         {
-            var buildings = await _buildingService.GetAllAsync();
-            if (building is null)
-            {
-                return BadRequest();
-            }
-
-            var buildingsList = buildings.ToList();
-            buildingsList.Remove(building);
-            buildings = buildingsList.AsEnumerable();
-            return Ok(building);
+            return await _buildingService.AddAsync(building);
         }
 
         [HttpDelete(Name = "DeleteBuilding")]
@@ -62,19 +45,18 @@ namespace ShivaReborn.Controllers
         }
 
         [HttpPatch(Name = "UpdateAnBuildingInfo")]
-        public async Task<ActionResult<Building>> UpdateBuilding(string id, [FromBody]Floor[] floors, string country, string city)
+        public async Task<ActionResult<Building>> UpdateBuilding(string id, string country, string city, [FromBody]Floor[] floors)
         {
             var buildings = await _buildingService.GetAllAsync();
             var building = buildings.FirstOrDefault(u => u.Id == id);
-
             await _buildingService.RemoveAsync(id);
 
-            building.floors = floors;
             building.country = country;
             building.city = city;
+            building.floors = floors;
 
             await _buildingService.AddAsync(building);
-            
+
             return Ok(building);
         }
     }

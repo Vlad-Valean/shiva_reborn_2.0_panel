@@ -28,30 +28,13 @@ namespace ShivaReborn.Controllers
         [HttpGet("GetOneUser")]
         public async Task<ActionResult<User>> GetOneUser(string id)
         {
-            var users = await _userService.GetAllAsync();
-            var user = users.FirstOrDefault(u => u.Id == id);
-
-            if (user is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
+            return await _userService.GetAsync(id);
         }
 
         [HttpPost(Name = "AddUser")]
         public async Task<ActionResult<User>> AddUser([FromBody] User user)
         {
-            var users = await _userService.GetAllAsync();
-            if (user is null)
-            {
-                return BadRequest();
-            }
-
-            var usersList = users.ToList();
-            usersList.Remove(user);
-            users = usersList.AsEnumerable();
-            return Ok(user);
+            return await _userService.AddAsync(user);
         }
 
         [HttpDelete(Name = "DeleteUser")]
@@ -66,15 +49,14 @@ namespace ShivaReborn.Controllers
         {
             var users = await _userService.GetAllAsync();
             var user = users.FirstOrDefault(u => u.Id == id);
-
             await _userService.RemoveAsync(id);
-            
+
             user.firstName = firstName;
             user.lastName = lastName;
             user.email = email;
-            
+
             await _userService.AddAsync(user);
-            
+
             return Ok(user);
         }
     }
