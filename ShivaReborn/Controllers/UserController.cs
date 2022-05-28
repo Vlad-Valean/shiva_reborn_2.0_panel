@@ -11,9 +11,9 @@ public class UserController
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IService<User> _userService;
 
-        public UsersController(IUserService userService)
+        public UsersController(IService<User> userService)
         {
             _userService = userService;
         }
