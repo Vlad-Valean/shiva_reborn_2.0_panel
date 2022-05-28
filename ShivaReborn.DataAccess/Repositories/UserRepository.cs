@@ -16,7 +16,11 @@ public class UserRepository : BaseRepository<User>
     {
         try
         {
+<<<<<<< HEAD
             return await _context.users.ToListAsync();
+=======
+            return await _context.users.Include(u => u.assignedPlace).ToListAsync();
+>>>>>>> parent of 41b9311... login done
         }
         catch (Exception msg)
         {
