@@ -26,6 +26,16 @@ builder.Services.AddTransient<IRepository<Building>, BuildingRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("ShivaContext");
 builder.Services.AddDbContext<ShivaContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("ShivaCorsPolicy", builder =>
+    {
+        builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -40,6 +50,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("ShivaCorsPolicy");
 
 app.MapControllers();
 

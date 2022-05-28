@@ -11,98 +11,8 @@ import {IPlaces} from "../../interfaces/user";
 })
 export class CalendarComponent implements OnInit {
 
-  session: IAuthSession= {
-    userId: '',
-    username: '',
-    token: '',
-    tokenType: '',
-    role: '',
-  };
-  places:IPlaces[]=[{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: false,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: false,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  },{
-    name: 'string',
-    isAssigned: true,
-    coord: {x:10,y:20},
-    assignedUser: 'string',
-    date: 'string',
-  }];
+  session?: IAuthSession;
+
 
   constructor(public dialog: MatDialog,
               private _authService:AuthService) {
@@ -113,7 +23,7 @@ export class CalendarComponent implements OnInit {
   }
 
   book (i:number) {
-    if (!this.places[i].isAssigned) this.places[i].isAssigned = true;
+    // if (!this.places[i].isAssigned) this.places[i].isAssigned = true;
   }
 
 }

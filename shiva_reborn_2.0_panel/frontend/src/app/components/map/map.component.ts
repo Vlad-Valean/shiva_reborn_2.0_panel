@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ICoord} from "../../interfaces/coord";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogContentComponent} from "../dialog-content/dialog-content.component";
 import {IPlaces} from "../../interfaces/user";

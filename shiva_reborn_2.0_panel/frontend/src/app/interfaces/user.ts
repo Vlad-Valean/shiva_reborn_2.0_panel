@@ -19,17 +19,13 @@ export interface IFloors{
   buildingId: string,
 }
 
-export interface IPlaces{
+export interface IPlaces {
   id?: string,
   name: string,
   isAssigned?: boolean,
-  floorId?: string,
-  coord: ICoord,
-  assignedUser?: string,
-  date?: string,
-}
-
-export interface ICoord{
-  x:number,
-  y:number
+  floorId: string,
+  xCoordonate: number,
+  yCoordonate: number,
+  usersId: string[],
+  dates?: string[],
 }
