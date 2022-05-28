@@ -59,7 +59,6 @@ namespace ShivaReborn.Controllers
 
             building.country = country;
             building.city = city;
-            building.floors = floors;
 
             await _buildingService.AddAsync(building);
 

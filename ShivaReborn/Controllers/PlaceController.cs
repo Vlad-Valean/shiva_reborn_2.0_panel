@@ -57,7 +57,6 @@ namespace ShivaReborn.Controllers
             await _placeService.RemoveAsync(id);
             place.name = name;
             place.isAssigned = isAssigned;
-            place.assignedUser = user;
 
             await _placeService.AddAsync(place);
 

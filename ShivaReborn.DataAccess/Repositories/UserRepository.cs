@@ -16,7 +16,7 @@ public class UserRepository : BaseRepository<User>
     {
         try
         {
-            return await _context.users.Include(u => u.assignedPlace).ToListAsync();
+            return await _context.users.ToListAsync();
         }
         catch (Exception msg)
         {
