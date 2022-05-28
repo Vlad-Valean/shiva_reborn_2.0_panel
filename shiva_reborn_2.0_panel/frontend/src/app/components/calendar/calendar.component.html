@@ -1,0 +1,7 @@
+<div class="places">
+<ng-container *ngFor="let place of places,let i=index">
+  <div class="square" [ngClass]="place.isAssigned?(place.assignedUser==session.userId)?'blue':'red':'green'" (click)="book(i)">
+    <h5>{{i+1}}</h5>
+  </div>
+</ng-container>
+</div>

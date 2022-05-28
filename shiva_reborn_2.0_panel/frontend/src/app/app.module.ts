@@ -17,6 +17,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { MapPageComponent } from './pages/map-page/map-page.component';
 import{MatSnackBarModule} from "@angular/material/snack-bar";
 import{HttpClientModule} from "@angular/common/http";
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import{HttpClientModule} from "@angular/common/http";
     MenuComponent,
     MapComponent,
     DialogContentComponent,
-    MapPageComponent
+    MapPageComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

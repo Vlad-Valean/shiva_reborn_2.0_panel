@@ -43,7 +43,7 @@ export class MapComponent implements OnInit {
     }
   }
 
-  addDot(e: any) {
+  addDot(e: MouseEvent) {
     if(this.session.role=='Admin') {
       const cursorX = e.clientX;
       const cursorY = e.clientY;
@@ -54,4 +54,5 @@ export class MapComponent implements OnInit {
   cl(a: any) {
     console.log(a);
   }
+
 }

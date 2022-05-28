@@ -1,4 +1,4 @@
-<img (click)="addDot($event);" [src]="{img}" #img>
+<img (click)="addDot($event)" [src]="img">
 <ng-container *ngFor="let place of places">
   <div class="dot" [ngClass]="place.isAssigned?(place.assignedUser==session.userId)?'blue':'red':'green'"
        [ngStyle]="{'left':place.coord.x+'px','top':place.coord.y+'px'}" (click)="openDialog()"></div>
