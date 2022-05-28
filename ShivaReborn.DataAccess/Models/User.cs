@@ -1,7 +1,8 @@
-﻿namespace ShivaReborn.DataAccess.Models;
-public class User
+﻿using System.Text.Json.Serialization;
+
+namespace ShivaReborn.DataAccess.Models;
+public class User : BaseEntity
 {
-    public string id { get; set; }
     public string firstName { get; set; }
     public string lastName { get; set; }
     public string email { get; set; }

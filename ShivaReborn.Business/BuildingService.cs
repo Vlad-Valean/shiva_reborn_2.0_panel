@@ -17,5 +17,19 @@ namespace ShivaReborn.Business
         {
             return await _buildingRepository.GetAllAsync();
         }
+
+        public async Task<Building> RemoveAsync(string id)
+        {
+            return await _buildingRepository.RemoveAsync(id);
+        }
+        public async Task<Building> GetAsync(string id)
+        {
+            return await _buildingRepository.GetAsync(id);
+        }
+
+        public async Task<Building> AddAsync(Building building)
+        {
+            return await _buildingRepository.AddAsync(building);
+        }
     }
 }

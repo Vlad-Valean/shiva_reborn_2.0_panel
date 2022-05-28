@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace ShivaReborn.DataAccess.Models;
 
-public class Place
+public class Place : BaseEntity
 {
-    public string id { get; set; }
     public string name { get; set; }
     public bool isAssigned { get; set; }
-    [ForeignKey("User")]
-    public User assignedUser { get; set; }
+    [ForeignKey("User")] [JsonIgnore] public User assignedUser { get; set; }
 }

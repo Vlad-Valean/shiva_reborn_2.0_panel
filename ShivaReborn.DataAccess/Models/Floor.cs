@@ -1,7 +1,9 @@
-﻿namespace ShivaReborn.DataAccess.Models;
+﻿using System.Text.Json.Serialization;
 
-public class Floor
+namespace ShivaReborn.DataAccess.Models;
+
+public class Floor : BaseEntity
 {
-    public string id { get; set; }
-    public Place[] places { get; set; }
+    public string Name;
+    [JsonIgnore] public Place[] places { get; set; }
 }

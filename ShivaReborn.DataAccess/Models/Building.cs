@@ -1,9 +1,10 @@
-﻿namespace ShivaReborn.DataAccess.Models;
+﻿using System.Text.Json.Serialization;
 
-public class Building
+namespace ShivaReborn.DataAccess.Models;
+
+public class Building : BaseEntity
 {
-    public string id { get; set; }
     public string country { get; set; }
     public string city { get; set; }
-    public Floor[] floors { get; set; }
+    [JsonIgnore] public Floor[] floors { get; set; }
 }

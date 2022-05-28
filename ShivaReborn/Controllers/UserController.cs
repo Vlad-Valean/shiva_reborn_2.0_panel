@@ -1,4 +1,6 @@
+using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShivaReborn.Business.Interfaces;
 using ShivaReborn.DataAccess.Models;
 using ShivaReborn.DataAccess.Repositories;
@@ -27,7 +29,7 @@ namespace ShivaReborn.Controllers
         public async Task<ActionResult<User>> GetOneUser(string id)
         {
             var users = await _userService.GetAllAsync();
-            var user = users.FirstOrDefault(u => u.id == id);
+            var user = users.FirstOrDefault(u => u.Id == id);
 
             if (user is null)
             {
@@ -37,15 +39,13 @@ namespace ShivaReborn.Controllers
             return Ok(user);
         }
 
-        [HttpDelete(Name = "DeleteUser")]
-        public async Task<ActionResult<User>> DeleteUser(string id)
+        [HttpPost(Name = "AddUser")]
+        public async Task<ActionResult<User>> AddUser([FromBody] User user)
         {
             var users = await _userService.GetAllAsync();
-            var user = users.FirstOrDefault(u => u.id == id);
-
             if (user is null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
             var usersList = users.ToList();
@@ -54,20 +54,27 @@ namespace ShivaReborn.Controllers
             return Ok(user);
         }
 
+        [HttpDelete(Name = "DeleteUser")]
+        public async Task<ActionResult<User>> DeleteUser(string id)
+        {
+            var user = await _userService.RemoveAsync(id);
+            return Ok(user);
+        }
+
         [HttpPatch(Name = "UpdateAnUserInfo")]
         public async Task<ActionResult<User>> UpdateUser(string id, string firstName, string lastName, string email)
         {
             var users = await _userService.GetAllAsync();
-            var user = users.FirstOrDefault(u => u.id == id);
+            var user = users.FirstOrDefault(u => u.Id == id);
 
-            if (user is null)
-            {
-                return NotFound();
-            }
-
+            await _userService.RemoveAsync(id);
+            
             user.firstName = firstName;
             user.lastName = lastName;
             user.email = email;
+            
+            await _userService.AddAsync(user);
+            
             return Ok(user);
         }
     }
