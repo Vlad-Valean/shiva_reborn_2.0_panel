@@ -12,11 +12,11 @@ public class UserRepository : BaseRepository<User>
         _context = context;
     }
 
-    public virtual async Task<IEnumerable<User>> GetAllAsync()
+    public override async Task<IEnumerable<User>> GetAllAsync()
     {
         try
         {
-            return await _context.Set<User>().ToListAsync();
+            return await _context.users.Include(u => u.building).ToListAsync();
         }
         catch (Exception msg)
         {
