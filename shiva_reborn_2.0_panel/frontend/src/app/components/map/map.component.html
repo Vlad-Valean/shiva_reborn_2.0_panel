@@ -1,5 +1,9 @@
 <img (click)="addDot($event)" [src]="img">
 <ng-container *ngFor="let place of places">
-  <div class="dot" [ngClass]="place.isAssigned?(place.assignedUser==session.userId)?'blue':'red':'green'"
-       [ngStyle]="{'left':place.coord.x+'px','top':place.coord.y+'px'}" (click)="openDialog()"></div>
+<!--  <div class="dot" [ngClass]="place.isAssigned?(place.usersId[0]==session.userId)?'blue':'red':'green'"-->
+<!--       [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}" (click)="openDialog()"></div>-->
+  <div *ngIf="isOccUser(place)" class="dot blue" (click)="openDialog()" [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}"></div>
+  <div *ngIf="isOcc(place)" class="dot red" (click)="openDialog()" [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}"></div>
+  <div *ngIf="!(isOcc(place) || isOccUser(place))" class="dot green" (click)="openDialog()" [ngStyle]="{'left':place.xCoordonate+'px','top':place.yCoordonate+'px'}"></div>
 </ng-container>
+<app-datepicker (outputDate)="date=$event"></app-datepicker>

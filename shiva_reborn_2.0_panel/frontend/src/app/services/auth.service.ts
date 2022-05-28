@@ -64,6 +64,7 @@ export class AuthService {
     if (!this._session) {
       this._session = <IAuthSession>await firstValueFrom(this.storage.getItem(AuthService._sessionStorageKey));
     }
+    this._session.userId='string';
     return this._session;
   }
 }

@@ -8,28 +8,24 @@ export interface IUser {
 }
 
 export interface IBuilding {
-  id?: string,
+  id: string,
   country: string,
   city: string,
-  floors: IFloors[]
 }
 
 export interface IFloors{
-  id?: string,
+  id: string,
   name: string,
-  places: IPlaces[]
+  buildingId: string,
 }
 
-export interface IPlaces{
-  id?: string,
+export interface IPlaces {
+  id: string,
   name: string,
-  isAssigned: boolean,
-  coord: ICoord,
-  assignedUser: string,
-  date: string,
-}
-
-export interface ICoord{
-  x:number,
-  y:number
+  isAssigned?: boolean,
+  floorId: string,
+  xCoordonate: number,
+  yCoordonate: number,
+  usersId: string[],
+  dates: string[],
 }
