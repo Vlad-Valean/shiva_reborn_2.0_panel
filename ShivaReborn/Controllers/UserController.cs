@@ -3,9 +3,7 @@ using ShivaReborn.Business.Interfaces;
 using ShivaReborn.DataAccess.Models;
 using ShivaReborn.DataAccess.Repositories;
 
-namespace ShivaReborn.Controllers;
-
-public class UserController
+namespace ShivaReborn.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -18,14 +16,14 @@ public class UserController
             _userService = userService;
         }
 
-
-        [HttpGet(Name = "GetUsers")]
+        [HttpGet("GetUsers")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             var users = await _userService.GetAllAsync();
             return Ok(users);
         }
 
+        [HttpGet("GetOneUser")]
         public async Task<ActionResult<User>> GetOneUser(string id)
         {
             var users = await _userService.GetAllAsync();
@@ -39,7 +37,7 @@ public class UserController
             return Ok(user);
         }
 
-        [HttpGet(Name = "DeleteUser")]
+        [HttpDelete(Name = "DeleteUser")]
         public async Task<ActionResult<User>> DeleteUser(string id)
         {
             var users = await _userService.GetAllAsync();
@@ -57,7 +55,7 @@ public class UserController
         }
 
         [HttpPatch(Name = "UpdateAnUserInfo")]
-        public async Task<ActionResult<User>> UpdateUser(string id, string firstName, string lastName, string email, Building building, Place place)
+        public async Task<ActionResult<User>> UpdateUser(string id, string firstName, string lastName, string email)
         {
             var users = await _userService.GetAllAsync();
             var user = users.FirstOrDefault(u => u.id == id);
@@ -70,8 +68,6 @@ public class UserController
             user.firstName = firstName;
             user.lastName = lastName;
             user.email = email;
-            user.building = building;
-            user.assignedPlace = place;
             return Ok(user);
         }
     }

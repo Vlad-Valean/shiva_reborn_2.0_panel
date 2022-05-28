@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShivaReborn.DataAccess.Models;
-using System.Data;
 namespace ShivaReborn.DataAccess
 {
     public class ShivaContext : DbContext
