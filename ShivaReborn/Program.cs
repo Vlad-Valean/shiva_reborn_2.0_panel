@@ -1,28 +1,39 @@
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using ShivaReborn.Business;
+using ShivaReborn.Business.Interfaces;
 using ShivaReborn.DataAccess;
+using ShivaReborn.DataAccess.Models;
+using ShivaReborn.DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<IService<User>, UserService>();
+builder.Services.AddTransient<IRepository<User>, UserRepository>();
+
+var connectionString = builder.Configuration.GetConnectionString("ShivaContext");
+builder.Services.AddDbContext<ShivaContext>(options => options.UseSqlServer(connectionString));
+
 var app = builder.Build();
-var configuration = builder.Configuration;
 
-app.MapGet("/", () => "Hello World!");
-
-var services = builder.Services;
-
-services.AddControllersWithViews().AddNewtonsoftJson();
-services.AddRazorPages();
-
-services.AddCors(options =>
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
 {
-    options.AddPolicy("ShivaRebornCorsPolicy", builder =>
-    {
-        builder
-            .WithOrigins("http://localhost:4200")
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-    });
-});
+    
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
