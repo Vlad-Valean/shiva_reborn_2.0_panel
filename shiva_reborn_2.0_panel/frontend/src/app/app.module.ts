@@ -11,14 +11,17 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from "@angular/material/button";
-import { MapComponent } from './components/map/map.component';
+import {MapComponent} from './components/map/map.component';
+import {DialogContentComponent} from './components/dialog-content/dialog-content.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     MenuComponent,
-    MapComponent
+    MapComponent,
+    DialogContentComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { MapComponent } from './components/map/map.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
