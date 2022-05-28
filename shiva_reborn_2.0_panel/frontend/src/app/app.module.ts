@@ -19,6 +19,11 @@ import{MatSnackBarModule} from "@angular/material/snack-bar";
 import{HttpClientModule} from "@angular/common/http";
 import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import {MatSelectModule} from "@angular/material/select";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -28,22 +33,27 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MapComponent,
     DialogContentComponent,
     MapPageComponent,
-    CalendarComponent
+    CalendarComponent,
+    AdminPageComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        RouterModule,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatSnackBarModule,
-        HttpClientModule,
-        MatAutocompleteModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    RouterModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    NgbModule,
+    MatCheckboxModule,
+    MatTabsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
