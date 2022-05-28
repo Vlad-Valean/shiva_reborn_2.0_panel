@@ -16,7 +16,7 @@ services.AddRazorPages();
 
 services.AddCors(options =>
 {
-    options.AddPolicy("JudgeAppCorsPolicy", builder =>
+    options.AddPolicy("ShivaRebornCorsPolicy", builder =>
     {
         builder
             .WithOrigins("http://localhost:4200")
