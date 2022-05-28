@@ -15,8 +15,6 @@ import {BuildingService} from "../../services/building.service";
 export class MapComponent implements OnInit {
   @Input() img?: string;
   @Input() places?: IPlaces[];
-  todayDate= new Date();
-  twoMonth=new Date();
   session: IAuthSession= {
     userId: '',
     username: '',
@@ -32,7 +30,6 @@ export class MapComponent implements OnInit {
   }
 
  async ngOnInit() {
-    this.twoMonth.setMonth(this.twoMonth.getMonth() + 2)
     this.session=await this._authService.getSession();
   }
 
@@ -55,10 +52,6 @@ export class MapComponent implements OnInit {
       const cursorY = e.clientY;
       //post cu place
     }
-  }
-
-  changeDate(){
-    console.log(this.date);
   }
 
   padTo2Digits(num:number) {

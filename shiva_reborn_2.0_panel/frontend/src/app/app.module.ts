@@ -20,6 +20,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MenuComponent,
     MapComponent,
     DialogContentComponent,
-    CalendarComponent
+    CalendarComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
